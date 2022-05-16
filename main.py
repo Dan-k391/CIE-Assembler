@@ -119,14 +119,9 @@ for i in data_dict:
 rows.append(content)
 
 rows_change = copy.deepcopy(rows)
-for i in range(len(rows)):
-    if i == 0:
-        for j in range(len(rows[i])):
-            if rows_change[i][j] == '-30000':
-                rows_change[i][j] = ' '
-        continue
+for i in range(1, len(rows)):
     for j in range(len(rows[i])):
-        if rows_change[i][j] == rows[i - 1][j] or rows_change[i][j] == '-30000':
+        if rows_change[i][j] == rows[i - 1][j]:
             rows_change[i][j] = ' '
 
 print(rows)
