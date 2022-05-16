@@ -18,7 +18,6 @@ for i in range(code_len):
     command_dict[commands[i][0]] = commands[i][1:]
 print(commands)
 
-#
 data = [['ACC', '']]
 data_dict = {}
 with open('data.txt', 'r') as f:
@@ -96,7 +95,7 @@ while True:
         exit()
     
     # store content of each line
-    content = [line]
+    content = [str(line)]
     for i in data_dict:
         content.append(data_dict[i])
     rows.append(content)
@@ -107,8 +106,14 @@ while True:
     #
     # content.insert(0, line)
 
+# add first line
+content = ['']
+for i in data:
+    content.append(i[1])
+rows.insert(0, content)
+
 # add the last one
-content = [line]
+content = [str(line)]
 for i in data_dict:
     content.append(data_dict[i])
 rows.append(content)
@@ -125,7 +130,6 @@ for i in range(len(rows)):
             rows_change[i][j] = ' '
 
 print(rows)
-print(rows_change)
 with open('table.csv', 'w') as f:
     f_csv = csv.writer(f)
     f_csv.writerow(headers)
